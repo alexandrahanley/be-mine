@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-    before_action :set_user_message, only: [:show, :edit, :update, :destroy]
 
 
     def index
@@ -8,28 +7,52 @@ class MessagesController < ApplicationController
 
 
     def show
-      @message= Message.new(message_params)
+      @message = Message.find(params[:id])
     end
 
+    # GET /tasks/new
     def new
-      @user = User.find(params[:user_id])
       @message = Message.new
     end
 
     def edit
+      @message = Message.find(params[:id])
+
     end
+
 
     def create
       @message = Message.new(message_params)
-      @message.user_id = params[:user_id]
       if @message.save
-        redirect_to user_messages_path
+        redirect_to @message, notice: 'Project was successfully created.'
       else
-        render @user
+        render :new
       end
     end
 
 
+    def update
+      @message = Message.find(params[:id])
+      if @message.update(message_params)
+        redirect_to @message
+      else
+        render :edit
+      end
+    end
+
+    def destroy
+      @message = Message.find(params[:id])
+      @message.destroy
+      redirect_to @message
+    end
+
+    private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_task
+      @message= Message.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
       params.require(:message).permit(:description)
     end

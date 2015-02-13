@@ -1,0 +1,15 @@
+<div class="page-header">
+
+  <h1><%= @message.description %></h1>
+
+
+
+  </div>
+  <div class="pull-right">
+    <%= link_to 'Edit', edit_message_path, class: "btn btn-default" %>
+    <%= link_to 'Delete', @message, class: "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <%= link_to 'See all notes', messages_path, class: "btn btn-default" %></td></div>
+
+
+
+  </div>

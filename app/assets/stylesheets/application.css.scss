@@ -149,7 +149,7 @@ body {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 100%; 
+    width: 100%;
   }
 }
 
@@ -163,4 +163,8 @@ body {
 
 .form-fill {
   color: #fff;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+  background-color: #FA0780;
 }
