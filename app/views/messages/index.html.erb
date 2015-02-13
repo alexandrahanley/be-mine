@@ -1,0 +1,31 @@
+<div class="container">
+
+    <% if notice %>
+    <div class= "alert alert-success"><%= notice %></div>
+    <% end %>
+
+    <div class="pull-right"><%= link_to 'New Love Note', new_user_message_path(current_user), class: "btn btn-info" %>
+    </div>
+    <h1>Listing all the love</h1>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.description %></td>
+        <td class ="text-right"><%= link_to 'Edit', edit_user_message, class: "btn btn-default" %>
+          <%= link_to 'Delete', user_message, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
